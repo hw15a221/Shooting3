@@ -60,10 +60,19 @@ void Update()
         DrawImage("bullet.png", bulletPos);
     }
 
-    // 砲台の描画
-    FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
+   // 砲台の描画
     DrawImage("cannon.png", cannonPos);
-
+    
+    //砲台の移動幅の描画
+    FillRect(Rect(cannonPos.x - 10, -140, 20, 100), Color::blue);
+    
+    //砲台の移動
+    cannonPos.y += speed * Time::deltaTime;
+    if (cannonPos.y >= -70){
+        speed *= -1;
+    }else if (cannonPos.y <= -150){
+        speed *= -1;
+    }
     // ターゲットの描画
     FillRect(targetRect, Color::red);
 
